@@ -1,3 +1,8 @@
 {
     "mongoURI" : "mongodb+srv://kyoko:Zoro3@devconnector.ufu5w.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+    , 
+    "jwtsecret" : "Superman98",
+    "githubClientId" : "d16556883f75d82f7c16",
+    "githubSecret": "46d378ff04ac8ab7ab48df3a393541bd476bff0e"
+
 }
