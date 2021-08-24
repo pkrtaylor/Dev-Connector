@@ -1,12 +1,15 @@
 import React, { Fragment, useState} from 'react';
-import { Link } from 'react-router-dom';
-
+import { Link, Redirect } from 'react-router-dom';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+// note - login the acction is a prop so we place it in paramter 
+import {login} from '../../actions/auth'// importing the login action 
 
 
 // since this is a form we need to have some component state 
 //each input needs to hvae its own state and onchange handler 
 //onchange handler, so when soemone types it updates the state
-const Login = () => {
+const Login = ({login, isAuthenticated}) => {
 
   const [formData, setFormData] = useState({
     email: '',
@@ -27,8 +30,14 @@ const Login = () => {
 
   const onSubmit = async e =>{
     e.preventDefault();
-    console.log('Success')
+    //this shall fire off the login action 
+    login(email, password);
     
+  }
+
+  if(isAuthenticated){
+    // with react router we can do 'redirect'
+    return <Redirect to='/dashboard' />;
   }
     return ( 
       <Fragment>
@@ -70,5 +79,15 @@ const Login = () => {
 };
 
 
+Login.propTypes ={
+  login: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool // shorthand : ptb
+}
+// this allows us to manipulate values in state or just the state in components
+//so we are basically turning our state into a props, since props can be used in components
+//isAuthenticated is now a prop we can use 
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
 
-export default Login
+export default connect(mapStateToProps, {login})(Login)

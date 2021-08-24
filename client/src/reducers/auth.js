@@ -1,4 +1,10 @@
-import {REGISTER_FAIL, REGISTER_SUCCESS} from '../actions/types'
+import {
+    REGISTER_FAIL, 
+    REGISTER_SUCCESS, 
+    USER_LOADED, 
+    AUTH_ERROR,
+    LOGIN_SUCCESS,
+    LOGIN_FAIL} from '../actions/types'
 
 const initialState= {
     //we can access local storage using vaniila JS, we look for an item in local storage called token
@@ -19,9 +25,19 @@ export default function(state = initialState, action){
     const {type, payload} = action;
     
     switch(type){
-        case REGISTER_SUCCESS: 
+        case USER_LOADED:
+            return {
+                ...state,
+                isAuthenticated: true,
+                loading: false,
+                user: payload // user is in the payload
+            }
+         
+    
         //we do setItem because we want to put the token that is returned into local storage 
-        //up top all we are doing is putting it insde the state token 
+        //up top all we are doing is putting it insde the state token
+        case REGISTER_SUCCESS:
+        case LOGIN_SUCCESS:  
             localStorage.setItem('token', payload.token)
             return{
                 ...state,
@@ -32,6 +48,8 @@ export default function(state = initialState, action){
         // on register_fail we are going to remove anything thats in local storage for the token
         // if its a failed login we want to remove the token completely
         case REGISTER_FAIL:
+        case AUTH_ERROR:
+        case LOGIN_FAIL:
             localStorage.removeItem('token');
             return{
                 ...state,

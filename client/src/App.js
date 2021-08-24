@@ -1,12 +1,15 @@
-import React,{ Fragment } from 'react';
+import React,{ Fragment, useEffect } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import NavBar from './components/layout/NavBar';
 import Landing from './components/layout/Landing';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login'
 import Alert from './components/layout/Alert'
+import setAuthToken from './utils/setAuthToken'
 import './App.css';
 
+// to call loadUser we will use a package called useEffect
+import {loadUser} from './actions/auth'
 //Redux 
 //Provider connects redux and react, redux is actually seperate from react
 //by surroudding the entire app in provider it brings both frameworks together
@@ -19,8 +22,19 @@ import store from './store'
 // we want a section with class name contianer because ervy page with in the
 //theme except for the landing page has a class container to push evrythign to the middle
 //on the ladning oage we want the imaeg to go all the way over so it dosent have the class container 
+if(localStorage.token){
+  setAuthToken(localStorage.token);
+}
 
-const App = ()  => (
+
+const App = ()  => { 
+  //useEffect takes in a fucntion 
+  //when the state updates the useEffect fucntoin will keep running sort of like a loop
+  //we only want it to run once so we add an empty bracket in as annother argument 
+  useEffect(() => {
+    store.dispatch(loadUser());
+  }, []);
+  return (
   <Provider store={store}>
   <Router>
     <Fragment>
@@ -38,7 +52,7 @@ const App = ()  => (
 </Fragment>
   </Router>
   </Provider>
-);
+)};
 
  
 export default App;
