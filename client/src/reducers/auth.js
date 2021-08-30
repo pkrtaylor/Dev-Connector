@@ -4,7 +4,8 @@ import {
     USER_LOADED, 
     AUTH_ERROR,
     LOGIN_SUCCESS,
-    LOGIN_FAIL} from '../actions/types'
+    LOGIN_FAIL,
+    LOGOUT} from '../actions/types'
 
 const initialState= {
     //we can access local storage using vaniila JS, we look for an item in local storage called token
@@ -44,12 +45,14 @@ export default function(state = initialState, action){
                 ...payload,
                 isAuthenticated: true, 
                 loading: false
+
             }
         // on register_fail we are going to remove anything thats in local storage for the token
         // if its a failed login we want to remove the token completely
         case REGISTER_FAIL:
         case AUTH_ERROR:
         case LOGIN_FAIL:
+        case LOGOUT:
             localStorage.removeItem('token');
             return{
                 ...state,

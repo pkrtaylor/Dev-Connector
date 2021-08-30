@@ -31,7 +31,7 @@ const Login = ({login, isAuthenticated}) => {
   const onSubmit = async e =>{
     e.preventDefault();
     //this shall fire off the login action 
-    login(email, password);
+    login({email, password});
     
   }
 
