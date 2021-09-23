@@ -5,7 +5,8 @@ import {
     AUTH_ERROR,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
-    LOGOUT} from '../actions/types'
+    LOGOUT,
+    ACCOUNT_DELETED} from '../actions/types'
 
 const initialState= {
     //we can access local storage using vaniila JS, we look for an item in local storage called token
@@ -49,10 +50,13 @@ export default function(state = initialState, action){
             }
         // on register_fail we are going to remove anything thats in local storage for the token
         // if its a failed login we want to remove the token completely
+        //ACCOUNT_DELETED was put in auth reducer because we are clearing the profile with 'CLEAR_PROFILE'
+        //so everythign will get set back to null, for auth we want to mkae sure that the same thing happens liek when we log out  
         case REGISTER_FAIL:
         case AUTH_ERROR:
         case LOGIN_FAIL:
         case LOGOUT:
+        case ACCOUNT_DELETED:
             localStorage.removeItem('token');
             return{
                 ...state,

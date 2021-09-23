@@ -5,7 +5,7 @@
 //repos: fro github repos
 
 
-import { GET_PROFILE, PROFILE_ERROR, CLEAR_PROFILE, UPDATE_PROFILE } from "../actions/types";
+import { GET_PROFILE, PROFILE_ERROR, CLEAR_PROFILE, UPDATE_PROFILE, GET_PROFILES, GET_REPOS} from "../actions/types";
 
 //error object for any errors in the request
 const initialState={
@@ -27,6 +27,12 @@ export default function(state= initialState, action){
             profile: payload, //save profile of user into state profile
             loading: false //user is no longer loading since we actually got profile means no error
            }
+        case GET_PROFILES:
+            return{
+                ...state,
+                profiles: payload,
+                loading: false
+            };
         case PROFILE_ERROR:
             return{
                 ...state,
@@ -40,7 +46,12 @@ export default function(state= initialState, action){
                 repos:[],
                 loading:false
             }
-            
+        case GET_REPOS:
+            return{
+                ...state,
+                repos: payload,
+                loading: false
+            }
 
         default:
             return state;

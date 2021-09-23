@@ -32,7 +32,7 @@ router.get('/', auth, async (req,res) => {
 //@access   public: public means you dont need a token to access this route 
 
 // All right, now we want to be able to send data to this route.
-//We need to send a name in email and a password in order to register a user.
+//We need to send a name in email and a password in order to login a user.
 // we will use express validator 
 router.post('/',
 //implementation of express validators, empty strings are denied as well 

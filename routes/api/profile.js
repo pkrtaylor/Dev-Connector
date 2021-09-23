@@ -6,7 +6,9 @@ const config = require('config')
 const auth = require('../../middleware/auth')
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
+const Post = require('../../models/Post')
 const {check, validationResult} = require('express-validator')
+
 
 //lets create a route
 //@route    GET api/profile/me
@@ -169,7 +171,7 @@ router.get('/', async (req,res) => {
 
 
 //@route    GET api/profile/user/:user_id
-//@desc    get all profiles 
+//@desc    get profile of user 
 //@access   Public
 
 router.get('/user/:user_id', async (req,res) => {
@@ -202,8 +204,13 @@ router.get('/user/:user_id', async (req,res) => {
 
 router.delete('/', auth , async (req,res) => {
     try {
-        await Profile.findOneAndRemove({user: req.user.id});
 
+        //remove user posts
+        //user is r=equaled to log in user 
+        await Post.deleteMany({user: req.user.id})
+        //remove user profile
+        await Profile.findOneAndRemove({user: req.user.id});
+        //remove user 
         await User.findOneAndRemove({ _id: req.user.id});
         res.json({msg : 'User Deleted'});
         

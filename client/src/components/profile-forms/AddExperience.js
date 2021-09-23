@@ -18,9 +18,8 @@ const AddExperience = ({addExperience, history}) => {
         description:''
         
     });
-    // we want the state of 'to' to be conditonal, if the the current is true meaning
-    //user still works there 'to' will be disabled.
-    const [toDateDisabled, toggleDisabled] = useState(false);
+ 
+   
 
     const { company, title, location, from, to, current, description } = formData;
 
@@ -89,4 +88,4 @@ AddExperience.propTypes = {
     addExperience: PropTypes.func.isRequired
 }
 
-export default connect(null, {addExperience})(AddExperience)
+export default connect(null, {addExperience})(withRouter(AddExperience))

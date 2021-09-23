@@ -20,7 +20,8 @@ const AddEducation = ({addEducation, history}) => {
     });
     // we want the state of 'to' to be conditonal, if the the current is true meaning
     //user still works there 'to' will be disabled.
-    const [toDateDisabled, toggleDisabled] = useState(false);
+    //A different method than toggle was used, it cam from the newest version on github
+   
 
     const { school, degree, fieldofstudy, from, to, current, description } = formData;
 
@@ -62,7 +63,7 @@ const AddEducation = ({addEducation, history}) => {
                 setFormData({ ...formData, current: !current });
               }}
             />{' '}
-            Current Job</p>
+            Current School</p>
         </div>
         <div className="form-group">
           <h4>To Date</h4>
@@ -88,4 +89,4 @@ AddEducation.propTypes = {
     addEducation: PropTypes.func.isRequired
 }
 
-export default connect(null, {addEducation})(AddEducation)
+export default connect(null, {addEducation})(withRouter(AddEducation))

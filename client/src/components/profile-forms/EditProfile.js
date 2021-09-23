@@ -56,7 +56,7 @@ const EditProfile = ({
             instagram: loading || !profile.social ? '' : profile.social.instagram
 
         })
-    }, [loading]);// the prop or condition this useEffect will depend is loading 
+    }, [loading, getCurrentProfile]);// the prop or condition this useEffect will depend is loading 
     //so the second parameter can be a contional
 
 

@@ -1,5 +1,5 @@
 import React, {Fragment, useState} from 'react'
-//the history object we passed in to the createprofile action we need o import 
+//the history object we passed in to the createprofile action we need to import 
 //package called "withRouter"
 import {Link, withRouter} from 'react-router-dom'
 import PropTypes from 'prop-types'
