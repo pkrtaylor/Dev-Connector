@@ -1,0 +1,40 @@
+.messenger {
+  /* my words were going into the navbar so I did this */
+  margin-top: 3.8rem;
+  display: flex;
+}
+
+.chatMenuInput {
+  width: 90%;
+  /*padding 10px for top and bottom and 0 for left and right */
+  padding: 10px 0;
+  border: none;
+  background-color: transparent;
+  /* this outline: none got rid of the black border outline when i would click on the input */
+  outline: none;
+  border-bottom: 1px solid gray;
+}
+
+/*  the container has been seperated into 12 parts*/
+
+.chatMenu {
+  flex: 3.5;
+}
+
+.chatBox {
+  flex: 5.5;
+}
+
+.chatOnline {
+  flex: 3;
+}
+/*the wrappers were created beacuase we will be doing padding inside the wrappers below
+and if we didnt have the wrappers, it would affect the sizes of the 3 container above*/
+
+.chatMenuWrapper,
+.chatBoxWrapper,
+.chatOnlineWrapper {
+  padding: 10px;
+
+  height: 100vh;
+}

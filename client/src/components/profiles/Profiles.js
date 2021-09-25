@@ -17,7 +17,7 @@ const Profiles = ({getProfiles, profile:{loading, profiles}}) => {
 
    // we take the profiles and map through them and for each profile we return
    //a ProfileItem, it takes in a key and profile data for that specific person
-    return <Fragment>
+    return <div className='container1'>
         {loading ? <Spinner/> : 
         <Fragment>
         <h1 className="large text-primary">Developers</h1>
@@ -33,7 +33,7 @@ const Profiles = ({getProfiles, profile:{loading, profiles}}) => {
         </div>
         </Fragment>
             }
-    </Fragment>
+    </div>
 }
 
 Profiles.propTypes = {

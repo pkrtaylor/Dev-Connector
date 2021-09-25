@@ -4,7 +4,6 @@ import {connect} from 'react-redux'
 import Spinner from '../layout/Spinner'
 import PostItem from '../posts/PostItem'
 import {getPost} from '../../actions/post'
-import { Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import CommentForm from './CommentForm'
 import CommentItem from './CommentItem'
@@ -16,7 +15,7 @@ const Post = ({getPost, post:{post, loading }, match}) => {
         getPost(match.params.id);
     },[getPost, match.params.id] )
     //here we return postItem page just with out the like and delete features
-    return loading || post === null ? <Spinner /> : < Fragment>
+    return loading || post === null ? <Spinner /> : <div className='container1'>
     <Link to='/posts' className='btn'>
     Back To Posts
     </Link>
@@ -27,7 +26,7 @@ const Post = ({getPost, post:{post, loading }, match}) => {
             <CommentItem key={comment._id} comment={comment} postId={post._id}/>
          ))}
     </div>
-    </Fragment >
+    </div >
 }
 
 Post.propTypes = {

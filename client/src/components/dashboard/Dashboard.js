@@ -18,7 +18,7 @@ const Dashboard = ({getCurrentProfile, auth: {user}, profile: {profile, loading}
         getCurrentProfile();
     }, [getCurrentProfile]);
     //we use ternary hee, if profile and laoding is still null then we show spinner 
-    return loading && profile === null ? (<Spinner />) : (<Fragment>
+    return loading && profile === null ? (<Spinner />) : (<div className='container1'>
         <h1 className="large text-primary">Dashboard</h1>
         <p className="lead">
         <i className="fas fa-user"/> Welcome {user && user.name} </p>
@@ -53,7 +53,7 @@ const Dashboard = ({getCurrentProfile, auth: {user}, profile: {profile, loading}
         
         )}
 
-        </Fragment>
+        </div>
         );
 };
 

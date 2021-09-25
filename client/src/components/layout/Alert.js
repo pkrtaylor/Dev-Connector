@@ -16,8 +16,10 @@ alerts !== null
     //when ever you map through any array like this with an output of jsx 
     //our key will be alert.id
     //alert is an array, each alert in the array contains a msg and an id and alertType
+    <div className='container1'>
     <div key={alert.id} className={`alert alert-${alert.alertType}`}>
         {alert.msg}
+    </div>
     </div>
 ))
     

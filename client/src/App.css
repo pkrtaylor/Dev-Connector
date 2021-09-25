@@ -35,7 +35,10 @@ img {
 }
 
 /* Utilities */
-.container {
+.container2 {
+  height: calc(100vh - 70px);
+}
+.container1 {
   max-width: 1100px;
   margin: auto;
   overflow: hidden;
