@@ -2,7 +2,7 @@ import { GET_CONVOS, CONVO_ERROR } from "../actions/types";
 
 const initialState ={
 
-    conversations:[],
+    conversation:[],
     loading: true,
     error:{}
 }
@@ -16,7 +16,7 @@ export default function(state = initialState, action){
         case GET_CONVOS:
             return {
                 ...state,
-                conversations: payload,
+                conversation: payload,
                 loading: false
             }
         case CONVO_ERROR:

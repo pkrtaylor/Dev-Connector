@@ -4,6 +4,8 @@ import auth from './auth'
 import profile from './profile'
 import post from './post'
 import conversations from './conversations'
+import messages from './messages'
+
 
 // this takes in an object that will have any reducers we create 
 export default combineReducers({
@@ -11,6 +13,7 @@ export default combineReducers({
     auth,
     profile,
     post,
-    conversations
+    conversations,
+    messages
 
 });

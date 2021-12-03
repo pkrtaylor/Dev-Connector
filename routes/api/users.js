@@ -115,6 +115,19 @@ router.post('/',
 });
 
 
+router.get('/:userId', async (req,res) => {
+    try{
+        // in our middle ware we set req.user to the user in the token, which is why we can access it here
+        // we dont want the password so we add the end portion
+        const user = await User.findById(req.params.userId).select('-password');
+        res.json(user);
+    }
+    catch(err){
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
 
 
 module.exports = router;
