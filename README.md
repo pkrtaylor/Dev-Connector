@@ -18,7 +18,7 @@ cd client
 
 npm install
 ```
-Lastly, go back to the root directory 
+Lastly, go back to the root directory and start it up locally
 
 ```
 cd ..
