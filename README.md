@@ -17,9 +17,15 @@ Next you must go into the client folder on the command line
 cd client
 
 npm install
+```
+Lastly, go back to the root directory 
+
+```
+cd ..
 
 npm run dev
 ```
+
 
 
 
